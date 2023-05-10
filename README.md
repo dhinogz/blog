@@ -15,12 +15,12 @@
 $ cp .env.example .env
 ```
 
-#### 1. Build Docker images
+#### 2. Build Docker images
 ```bash
 $ docker compose build
 ```
 
-#### 2. Start Docker containers
+#### 3. Start Docker containers
 ```bash
 $ docker compose up -d
 ```
