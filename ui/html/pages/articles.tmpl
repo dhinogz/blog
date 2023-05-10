@@ -1,0 +1,23 @@
+{{define "title"}}Latest Articles{{end}}
+
+{{define "main"}}
+<div class="constrain">
+    <h1>Latest Articles</h1>
+    <!-- <div class="preheader">
+        <strong>Sorted by publication date</strong>
+    </div> -->
+    <h2>2023</h2>
+    {{if .Articles}}
+    <ol class="articles">
+        {{range .Articles}}
+        <li>
+            <a href="/articles/view?id={{.ID}}">{{.Title}}</a>
+            <time>{{.Created}}</time>
+        </li>
+        {{end}}
+    </ol>
+    {{else}}
+        <p>There's nothing to see here...yet!</p>
+    {{end}}
+{{end}}
+</div>

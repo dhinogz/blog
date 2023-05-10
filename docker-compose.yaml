@@ -1,0 +1,53 @@
+version: "3.9"
+
+services:
+
+  web:
+    container_name: blog_web
+    restart: "unless-stopped"
+    build:
+      context: . 
+      target: dev
+    command: air
+    volumes:
+      - ./:/app
+    env_file:
+      - .env
+    environment:
+      - BLOG_DB_DSN=${BLOG_DB_DSN}
+    ports:
+      - 4000:4000
+    networks:
+      - main
+    depends_on:
+      - postgres
+
+  postgres:
+    container_name: blog_db
+    restart: unless-stopped
+    image: postgres:latest
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_DB=${DATABASE_DB}
+      - POSTGRES_USER=${DATABASE_USER}
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+      - POSTGRES_SSLMODE=require
+    ports:
+      - 5432:5432
+    networks:
+      - main
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U blog -d postgres || exit 1"]
+      interval: 10s
+      retries: 10
+      start_period: 10s
+      timeout: 3s  
+
+volumes:
+  postgres_data:
+
+networks:
+  main:

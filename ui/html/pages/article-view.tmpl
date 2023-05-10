@@ -1,0 +1,20 @@
+{{define "title"}}{{.Article.Title}}{{end}}
+
+{{define "main"}}
+{{with .Article}}
+<div class="constrain">
+    <div class="single">
+        <article>        
+            <h1>{{.Title}}</h1>
+            <div class="preheader">
+                <strong>Published on:</strong>
+                <time>{{.Created}}</time>
+            </div>
+            <div class="copy">
+                {{.Content}}
+            </div>
+        </article>
+    </div>
+</div>
+{{end}}
+{{end}}

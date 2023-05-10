@@ -1,0 +1,42 @@
+{{define "base"}}
+<!doctype html>
+<html lang='en'>
+    <head>
+        <meta charset='utf-8'>
+        <title>{{template "title" .}} - David Hinojosa</title>
+         <!-- Link to the CSS stylesheet and favicon -->
+         <link rel="apple-touch-icon" sizes="180x180" href="/static/img/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/static/img/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/static/img/favicon-16x16.png">
+        <link rel="manifest" href="/static/img/site.webmanifest">
+        <link rel='stylesheet' href='/static/css/main.css'>
+        <!-- <link rel='shortcut icon' href='/static/img/favicon.ico' type='image/x-icon'> -->
+        <!-- Also link to some fonts hosted by Google -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik:400,500,700|Rubik+Italic&display=swap">
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            {{template "nav" .}}
+        </header>
+        <!-- Invoke the navigation template -->
+        <main>
+            {{template "main" .}}
+        </main>
+        <footer>
+            <div class="constrain">
+                <div class="licenses">
+                    © Copyright 2023 David Hinojosa
+                </div>
+                <div>
+                    <i>
+                        Powered by <a target="_blank" href='https://golang.org/'>Go</a>
+                    </i>
+                </div>
+            </div>
+        </footer>
+         <!-- And include the JavaScript file -->
+        <script src="/static/js/main.js" type="text/javascript"></script>
+    </body>
+</html>
+{{end}}
