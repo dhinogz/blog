@@ -1,7 +1,7 @@
 # Personal Blog
+A personal website and blog built with Go. 
 
-
-## Installation instructions
+## Installation
 
 #### Pre-requisites
 - Docker
