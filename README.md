@@ -43,7 +43,7 @@ $ lazydocker
   - [ ] Find out best way to go through these requirements
     - [ ] Common users cannot find login url
     - [ ] Bots scraping the internet cannot find login url
-    - [ ] Only I, the Lord Supreme, can access this view.
+    - [ ] Only I, The Lord Supreme, can access this view.
 - [ ] Create a POST articles views. User needs to be authenticated to view
 - [ ] Middleware
 - [ ] Add more projects with more detail

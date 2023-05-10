@@ -15,6 +15,13 @@ import (
 	_ "github.com/lib/pq"
 )
 
+type application struct {
+	config   config
+	errorLog *log.Logger
+	infoLog  *log.Logger
+	articles *models.ArticleModel
+}
+
 type config struct {
 	port int
 	env  string
@@ -26,37 +33,39 @@ type config struct {
 	}
 }
 
-type application struct {
-	config   config
-	errorLog *log.Logger
-	infoLog  *log.Logger
-	articles *models.ArticleModel
-}
-
 func main() {
 
+	// Network and DB config, input comes from command line flags
 	var cfg config
 
+	// Port and environment configuration
 	flag.IntVar(&cfg.port, "port", 4000, "Web server port")
 	flag.StringVar(&cfg.env, "env", "development", "Environment (development|staging|production)")
 
+	// Postgres DB configuration
 	flag.StringVar(&cfg.db.dsn, "db-dsn", os.Getenv("BLOG_DB_DSN"), "PostgreSQL DSN")
+
+	// Postgres connection rules
 	flag.IntVar(&cfg.db.maxOpenConns, "db-max-open-conns", 25, "PostgreSQL max open connections")
 	flag.IntVar(&cfg.db.maxIdleConns, "db-max-idle-conns", 25, "PostgreSQL max idle connections")
 	flag.StringVar(&cfg.db.maxIdleTime, "db-max-idle-time", "15m", "PostgreSQL max connection idle time")
 
 	flag.Parse()
 
+	// Create system log
 	errorLog := log.New(os.Stderr, "ERROR\t", log.Ldate|log.Ltime|log.Llongfile)
 	infoLog := log.New(os.Stderr, "INFO\t", log.Ldate|log.Ltime)
 
+	// Connect to db
 	db, err := openDB(cfg)
 	if err != nil {
 		errorLog.Fatal(err)
 	}
+	// Defer closes the database at the end of the main function
 	defer db.Close()
 	infoLog.Printf("database connection pool established")
 
+	// TODO: Change articles to models pointer
 	app := application{
 		config:   cfg,
 		errorLog: errorLog,
