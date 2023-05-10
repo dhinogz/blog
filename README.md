@@ -28,7 +28,7 @@ $ docker compose up -d
 #### 4. Make migrations
 ```bash
 $ export BLOG_DB_DSN=(dsn can be found in .env.example)
-$ migrate -path=./migrations $BLOG_DB_DSN up
+$ migrate -path=./migrations -database=$BLOG_DB_DSN up
 ```
 
 Go to localhost:4000 and it should be working.
