@@ -24,12 +24,14 @@
 </head>
 
 <body>
-  <header>
-    {{- partial "header.html" . -}}
-  </header>
-  <main>
-    {{- block "main" . }}{{- end }}
-  </main>
+  <div class="content-wrapper">
+    <header>
+      {{- partial "header.html" . -}}
+    </header>
+    <main>
+      {{- block "main" . }}{{- end }}
+    </main>
+  </div>
   <footer>
     {{- partial "footer.html" . -}}
   </footer>
