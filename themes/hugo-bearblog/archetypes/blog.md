@@ -18,3 +18,4 @@ menu = "main"
 +++
 
 This is a page about »{{ replace .Name "-" " " | title }}«.
+

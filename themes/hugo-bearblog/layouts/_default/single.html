@@ -1,5 +1,5 @@
 {{ define "main" }}
-{{ if eq .Type "blog" }}{{ if not .Params.menu }}
+{{ if or (eq .Type "blog") (eq .Type "til") }}{{ if not .Params.menu }}
 <h1>{{ .Title }}</h1>
 <p>
   <i>

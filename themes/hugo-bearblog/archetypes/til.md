@@ -19,4 +19,4 @@ menu = "main"
 # tags = [{{ range $plural, $terms := .Site.Taxonomies }}{{ range $term, $val := $terms }}"{{ printf "%s" $term }}",{{ end }}{{ end }}]
 +++
 
-TIL about »{{ replace .Name "-" " " | title }}«.
+TIL {{ .Name }}
