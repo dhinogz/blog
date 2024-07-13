@@ -1,3 +1,18 @@
 {{ define "main" }}
 {{ .Content }}
+
+<h3>Recent Blog</h3>
+<ul class="recent-list">
+  {{ range ( where .Site.RegularPages "Type" "blog" | first 3 ) }}
+    <li class="links"><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+  {{end}}
+</ul>
+
+<h3>Recent TIL</h3>
+<ul class="recent-list">
+  {{ range ( where .Site.RegularPages "Type" "til" | first 3 ) }}
+    <li class="links"><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+  {{end}}
+</ul>
+
 {{ end }}

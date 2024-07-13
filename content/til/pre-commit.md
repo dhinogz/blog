@@ -1,5 +1,5 @@
 +++
-title = 'TIL: Git Pre Commits'
+title = 'TIL: Git Pre-Commits'
 date = 2024-07-12T14:00:46-06:00
 draft = false
 +++
