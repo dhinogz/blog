@@ -20,9 +20,8 @@ This is how my pre-commit hook looks like at .git/hooks/pre-commit
 
 ```bash
 #!/bin/sh
-{
-    hugo --minify
-    git add public/
-    echo "Generated public static files"
-} 2> dev/null
+
+hugo --minify
+git add public/
+echo "Generated public static files"
 ```
