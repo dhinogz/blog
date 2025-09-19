@@ -1,7 +1,7 @@
 +++
 title = "How Coolify Changed My Life and Allowed Me to Ship Faster"
 date = "2024-07-12T14:01:02-06:00"
-
+draft = true
 #
 # description is optional
 #
